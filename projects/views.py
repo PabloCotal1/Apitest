@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project
 from .forms import ProjectForm
+from django import template
+from django.utils import formats
+
 
 # Create your views here.
 def project_list(request):
@@ -38,3 +41,11 @@ def project_delete(request, pk):
         project.delete()
         return redirect('project_list')
     return render(request, 'project_delete.html', {'project': project})
+
+
+
+register = template.Library()
+
+@register.filter(name='currency')
+def currency_format(value):
+    return formats.number_format(value, decimal_pos=2)

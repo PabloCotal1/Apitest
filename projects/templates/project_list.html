@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
 </head>
+
 <body>
-    <h1>Project List</h1>
+
+  <header>
+    <toolbar>
+      <div>
+        <button onclick="openMenu()">Menú</button>
+      </div>
+      <div>
+        <h1>Productos</h1>
+      </div>
+      <div>
+        <a href="/">Atrás</a>
+      </div>
+    </toolbar>
+  </header>
+
+  <main>
+
+    <div>
+      <label style="color: red;">Utilizando un Accesador</label>
+      <button onclick="location.href='/product-add'">Agregar</button>
+    </div>
+
     <ul>
-        {% for project in projects %}
-            <li><a href="{% url 'project_detail' project.pk %}">{{ project.nombre }}</a></li>
-        {% endfor %}
+      <!-- Recorremos el arreglo de registros utilizando item-->
+      {% for p in productos %}
+      <li>
+        <!-- Icono al inicio (start)-->
+        <span>⭐</span>
+        <!-- Campos de item -->
+        <span>{{ p.precio }}</span>
+        <!-- Icono al final -->
+        <span>ℹ️</span>
+        <!-- routerlink salta a otra pagina-->
+        <button onclick="location.href='/product-edit/{{ p.id }}'">Edit</button>
+        <!-- routerlink salta a otra pagina, pero con id del item-->
+        <button onclick="location.href='/product-detail/{{ p.id }}'">Detail</button>
+      </li>
+      {% endfor %}
     </ul>
+
+  </main>
+
+  <script>
+    function openMenu() {
+      // Implementa la lógica para abrir el menú aquí
+      console.log("Abrir menú");
+    }
+  </script>
+
 </body>
+
 </html>
