@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+</head>
+<body>
+    <h1>Project Detail</h1>
+    <p><strong>Nombre:</strong> {{ project.nombre }}</p>
+    <p><strong>Precio:</strong> {{ project.precio }}</p>
+    <!-- Agrega más detalles aquí según tus campos de modelo -->
+    <a href="{% url 'project_update' project.pk %}">Update</a>
+    <a href="{% url 'project_delete' project.pk %}">Delete</a>
+</body>
+</html>
